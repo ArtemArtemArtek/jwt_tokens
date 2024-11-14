@@ -5,7 +5,7 @@
 -- Dumped from database version 10.23
 -- Dumped by pg_dump version 10.23
 
--- Started on 2024-11-12 21:54:14
+-- Started on 2024-11-14 10:29:04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -161,7 +161,7 @@ COPY public.users (id, email, password, "isActive", "activationLink") FROM stdin
 -- Name: tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tokens_id_seq', 1, false);
+SELECT pg_catalog.setval('public.tokens_id_seq', 2, true);
 
 
 --
@@ -170,7 +170,7 @@ SELECT pg_catalog.setval('public.tokens_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_id_seq', 17, true);
 
 
 --
@@ -209,7 +209,7 @@ ALTER TABLE ONLY public.tokens
     ADD CONSTRAINT "tokens_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE SET NULL;
 
 
--- Completed on 2024-11-12 21:54:14
+-- Completed on 2024-11-14 10:29:04
 
 --
 -- PostgreSQL database dump complete

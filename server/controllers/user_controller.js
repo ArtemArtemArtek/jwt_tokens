@@ -1,11 +1,15 @@
 const {Token, User} = require('../models/models')
+const userService = require('../service/user_service')
 
 class userController {
     async registration(req, res, next){
         try {
-            
+            const {email, password} = req.body
+            const userData = await userService.registration(email, password)
+            return res.json(userData)
         } catch (error) {
-            
+
+            return res.json('Сервер завершился с ошибкой:'+error)
         }
     }   
     async login(req, res, next){
