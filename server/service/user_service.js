@@ -14,7 +14,7 @@ class userService {
         const hashPassword = await bcrypt.hash(password, 5)
         const activationLink = v4()
         const newUser = await User.create({ email: useremail, password: hashPassword, activationLink })
-
+        await mailService.sendActivationLink(useremail, `${process.env.BASE_URL}/server/activate/${activationLink}`)
         const dto = new userdto(newUser)
 
         const token = await tokenService.createToken({ ...dto})

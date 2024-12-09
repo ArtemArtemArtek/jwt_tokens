@@ -6,9 +6,9 @@ class userController {
         try {
             const {email, password} = req.body
             const userData = await userService.registration(email, password)
+            res.cookie('refreshToken', userData.refreshToken)
             return res.json(userData)
         } catch (error) {
-
             return res.json('Сервер завершился с ошибкой:'+error)
         }
     }   
