@@ -22,7 +22,7 @@ class mailService {
             text: '',
             html:
                 `
-            <h1>Ссыдка для активации акаунта на сервисе ${process.env.BASE_URL}</h1>
+            <h1>Ссылка для активации акаунта на сервисе ${process.env.BASE_URL}</h1>
             <a href='${activationLink}'>${activationLink}</a>
             `
         })

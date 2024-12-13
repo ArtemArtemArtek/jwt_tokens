@@ -15,7 +15,7 @@ class tokenService {
         if (tokenData) {
             tokenData.refresh = refreshToken
             return tokenData.save()
-        }
+        } 
         const token = Token.create({userId: userID, refresh: refreshToken})
         return token
     }

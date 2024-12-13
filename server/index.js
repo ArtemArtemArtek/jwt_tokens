@@ -7,6 +7,7 @@ const router = require('./route/index')
 // const userModel = require('./models/user_model')
 // const tokenModel = require('./models/token_model')
 const models = require('./models/models')
+const ErrorMidleware = require('./midlewares/errorHandler')
 
 // const mongoose = require('mongoose')
 
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 app.use('/server', router)
+app.use(ErrorMidleware)
 
 const start = async () => {
     try {
