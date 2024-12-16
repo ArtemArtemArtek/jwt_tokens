@@ -32,6 +32,28 @@ class userService {
         user.isActive = true
         await user.save()
     }
+
+    async login(useremail, password) {
+        const potentialUser = await User.findOne({ where: { email: useremail } })
+        if (!potentialUser) {
+            throw ApiError.Unauthorized()
+        }
+        const isPassEquals = await bcrypt.compare(password, potentialUser.password);
+        if (isPassEquals) {
+            const dto = new userdto(potentialUser)
+            const token = await tokenService.createToken({ ...dto })
+            await tokenService.saveToken(dto.id, token.refreshToken)
+            return { ...token, user: dto }
+        } else {
+            throw ApiError.BadRequest('Пользователь ввел неверный пароль')
+        }
+    }
+
+    async logout(refreshToken) {
+        const token = await tokenService.deleteToken(refreshToken)
+        return (token)
+    }
+
 }
 
 module.exports = new userService()
