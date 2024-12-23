@@ -13,7 +13,7 @@ const ErrorMidleware = require('./midlewares/errorHandler')
 
 const app = express()
 const PORT = process.env.PORT || 5000
-const DB_URL = process.env.DB_URL
+// const DB_URL = process.env.DB_URL
 
 app.use(express.json())
 app.use(cookieParser())
